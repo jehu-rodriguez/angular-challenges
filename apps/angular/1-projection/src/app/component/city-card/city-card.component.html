@@ -1,0 +1,16 @@
+<app-card [list]="cities()" customClass="bg-light-red">
+  <img ngSrc="assets/img/city.png" width="200" height="200" alt="" />
+
+  <ng-template cardRow let-city>
+    <app-list-item
+      [name]="city.name"
+      (deleted)="deleteCity(city.id)"/>
+  </ng-template>
+
+  <button
+    class="rounded-sm border border-blue-500 bg-blue-300 p-2"
+    (click)="addNewCity()">
+    Add
+  </button>
+</app-card>
+
