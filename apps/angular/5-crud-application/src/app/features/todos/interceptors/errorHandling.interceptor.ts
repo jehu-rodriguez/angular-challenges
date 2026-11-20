@@ -24,7 +24,7 @@ export const errorHandlingInterceptor: HttpInterceptorFn = (req, next) => {
         default:
           message = 'Something wrong occured';
       }
-      return throwError(() => new Error(message));
+      return throwError(() => Error(message));
     }),
   );
 };

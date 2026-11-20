@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import { randText } from '@ngneat/falso';
-import { catchError, Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Todo } from '../models/models';
 
 @Service()
@@ -29,13 +29,8 @@ export class TodoService {
     );
   }
 
-  delete(todo: Todo): Observable<void> {
+  delete(id: number): Observable<void> {
     return this.http
-      .delete<void>(`https://jsonplaceholder.typicode.com/todos/${todo.id}`)
-      .pipe(
-        catchError((err) => {
-          return throwError(() => new Error(err.message));
-        }),
-      );
+      .delete<void>(`https://jsonplaceholder.typicode.com/todos/${id}`)
   }
 }
